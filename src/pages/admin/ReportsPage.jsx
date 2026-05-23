@@ -99,7 +99,15 @@ export default function ReportsPage() {
               EventPay Dashboard
             </p>
           </div>
-
+          <button onClick={() => navigate('/admin/create-event')} style={{
+  display: 'flex', alignItems: 'center', gap: 8,
+  padding: '10px 18px', borderRadius: 10,
+  background: 'rgba(124,109,255,0.15)', border: '1px solid rgba(124,109,255,0.3)',
+  color: '#7c6dff', fontSize: 13, fontWeight: 700,
+  fontFamily: 'Tajawal, sans-serif', cursor: 'pointer',
+}}>
+  + New Event
+</button>
           <div style={{ display: 'flex', gap: 10 }}>
             <button onClick={() => handleDownload('excel')} style={{
               display: 'flex', alignItems: 'center', gap: 8,
