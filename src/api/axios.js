@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const api = axios.create({
+/*const api = axios.create({
   baseURL: 'https://localhost:7057/api',
+});*/
+
+const api = axios.create({
+  baseURL: 'http://eventpay-api.runasp.net/api',
 });
 
 // بيضيف الـ Token تلقائياً لو موجود
