@@ -5,7 +5,7 @@ import axios from 'axios';
 });*/
 
 const api = axios.create({
-  baseURL: 'http://eventpay-api.runasp.net/api',
+  baseURL: 'https://eventpay-api.runasp.net/api',
 });
 
 // بيضيف الـ Token تلقائياً لو موجود
