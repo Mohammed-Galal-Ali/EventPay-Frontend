@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
 import toast from 'react-hot-toast';
-import { Plus, Trash2, MapPin, Calendar, Users, DollarSign } from 'lucide-react';
+import { Plus, Trash2, MapPin, Calendar, Users } from 'lucide-react';
 
 export default function EventsPage() {
   const navigate = useNavigate();
