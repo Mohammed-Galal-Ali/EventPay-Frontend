@@ -7,6 +7,7 @@ import './index.css';
 import LoginPage from './pages/admin/LoginPage';
 import ReportsPage from './pages/admin/ReportsPage';
 import CreateEventPage from './pages/admin/CreateEventPage';
+import EventsPage from './pages/admin/EventsPage';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
   <Route path="/admin/login" element={<LoginPage />} />
   <Route path="/admin/reports" element={<ReportsPage />} />
   <Route path="/admin/create-event" element={<CreateEventPage />} />
+<Route path="/admin/events" element={<EventsPage />} />
 
       </Routes>
     </BrowserRouter>

@@ -71,7 +71,7 @@ export default function ReportsPage() {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.download = `tickets.${type}`;
+      link.download = type === 'excel' ? 'tickets.xlsx' : 'tickets.pdf';
       link.click();
       toast.success(`${type.toUpperCase()} downloaded!`);
     } catch {
@@ -101,15 +101,17 @@ export default function ReportsPage() {
           </div>
 
           <div style={{ display: 'flex', gap: 10 }}>
-                      <button onClick={() => navigate('/admin/create-event')} style={{
-  display: 'flex', alignItems: 'center', gap: 8,
-  padding: '10px 18px', borderRadius: 10,
-  background: 'rgba(124,109,255,0.15)', border: '1px solid rgba(124,109,255,0.3)',
-  color: '#7c6dff', fontSize: 13, fontWeight: 700,
-  fontFamily: 'Tajawal, sans-serif', cursor: 'pointer',
-}}>
-  + New Event
-</button>
+            <button onClick={() => navigate('/admin/events')} style={{
+              display: 'flex', alignItems: 'center', gap: 8,
+              padding: '10px 18px', borderRadius: 10,
+              background: 'rgba(124,109,255,0.1)', border: '1px solid rgba(124,109,255,0.3)',
+              color: '#7c6dff', fontSize: 13, fontWeight: 700,
+              fontFamily: 'Tajawal, sans-serif', cursor: 'pointer',
+            }}>
+              🎯Mange Events
+            </button>
+
+
             <button onClick={() => handleDownload('excel')} style={{
               display: 'flex', alignItems: 'center', gap: 8,
               padding: '10px 18px', borderRadius: 10,
@@ -212,23 +214,23 @@ export default function ReportsPage() {
                 </tr>
               </thead>
               <tbody>
-{loading ? (
-  Array.from({ length: 10 }).map((_, i) => (
-    <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
-      {Array.from({ length: 8 }).map((_, j) => (
-        <td key={j} style={{ padding: '14px 16px' }}>
-          <div style={{
-            height: 12, borderRadius: 6,
-            background: 'linear-gradient(90deg, var(--border) 25%, var(--surface) 50%, var(--border) 75%)',
-            backgroundSize: '200% 100%',
-            animation: 'shimmer 1.5s infinite',
-            width: j === 0 ? '30px' : j === 6 ? '60px' : '80%',
-          }} />
-        </td>
-      ))}
-    </tr>
-  ))
-) : tickets.map((ticket) => {
+                {loading ? (
+                  Array.from({ length: 10 }).map((_, i) => (
+                    <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
+                      {Array.from({ length: 8 }).map((_, j) => (
+                        <td key={j} style={{ padding: '14px 16px' }}>
+                          <div style={{
+                            height: 12, borderRadius: 6,
+                            background: 'linear-gradient(90deg, var(--border) 25%, var(--surface) 50%, var(--border) 75%)',
+                            backgroundSize: '200% 100%',
+                            animation: 'shimmer 1.5s infinite',
+                            width: j === 0 ? '30px' : j === 6 ? '60px' : '80%',
+                          }} />
+                        </td>
+                      ))}
+                    </tr>
+                  ))
+                ) : tickets.map((ticket) => {
                   const sc = statusColor(ticket.status);
                   return (
                     <tr key={ticket.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.15s' }}
@@ -271,9 +273,9 @@ export default function ReportsPage() {
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
               padding: '16px 20px', borderTop: '1px solid var(--border)',
             }}>
-<span style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'Tajawal, sans-serif', direction: 'rtl' }}>
-  صفحة {currentPage} من {totalPages} — {totalCount} نتيجة
-</span>
+              <span style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'Tajawal, sans-serif', direction: 'rtl' }}>
+                صفحة {currentPage} من {totalPages} — {totalCount} نتيجة
+              </span>
 
               <div style={{ display: 'flex', gap: 6 }}>
                 <button
