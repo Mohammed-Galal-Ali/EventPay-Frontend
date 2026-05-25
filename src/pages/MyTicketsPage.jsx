@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import api from '../api/axios';
 import toast from 'react-hot-toast';
-import { Mail, Key, Ticket, MapPin, Calendar, CheckCircle, Clock, XCircle } from 'lucide-react';
+import { Mail, Key,  MapPin, Calendar, CheckCircle, Clock, XCircle } from 'lucide-react';
 
 export default function MyTicketsPage() {
   const [step, setStep] = useState('email'); // email → otp → tickets
