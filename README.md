@@ -1,70 +1,278 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🎟️ EventPay
 
-## Available Scripts
+### Full-Stack Event Ticketing & Payment Platform
 
-In the project directory, you can run:
+![.NET](https://img.shields.io/badge/.NET-10.0-purple?style=for-the-badge&logo=dotnet)
+![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)
+![Stripe](https://img.shields.io/badge/Stripe-Payment-green?style=for-the-badge&logo=stripe)
+![SQL Server](https://img.shields.io/badge/SQL_Server-Database-red?style=for-the-badge&logo=microsoftsqlserver)
+![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)
 
-### `npm start`
+**🌍 Live Demo → [event-pay-frontend-rouge.vercel.app](https://event-pay-frontend-rouge.vercel.app)**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📌 About
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+EventPay is a production-ready event ticketing platform built with **.NET 10 Web API** and **React 18**.
 
-### `npm run build`
+Users can browse events, purchase tickets securely via Stripe, and receive instant confirmations on WhatsApp, Email, and Telegram. Admins get a full dashboard with analytics, reports, and event management.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ✨ Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 💳 Payments (Stripe)
+- Webhook-based payment confirmation — server never trusts the client
+- PaymentIntent flow with client secret
+- Real-time ticket status update after Stripe confirms payment
+- Automatic notifications triggered by webhook
 
-### `npm run eject`
+### 📩 Notifications (Multi-Channel)
+- **Email** confirmation via SendGrid
+- **WhatsApp** confirmation via Twilio Sandbox
+- **Telegram** Bot notifications
+- **OTP** verification via Email — only the real owner can view their tickets
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🎫 My Tickets (OTP Protected)
+- User enters their email
+- OTP sent to their email for verification
+- Verified user sees all their tickets with event details + map link
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🗺️ Maps (OpenStreetMap)
+- Auto-geocoding of event location on creation
+- Google Maps deep link for every event
+- Distance calculation using Haversine Formula
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 📊 Admin Dashboard (JWT Protected)
+- Secure login with JWT Bearer tokens
+- Tickets table with server-side pagination & filtering
+- Export to **Excel** (ClosedXML) + **PDF** (QuestPDF)
+- Analytics → Line Chart (sales last 7 days) + Pie Chart (ticket status) + Bar Chart (top events)
+- Full event management → Create & Delete events
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🛡️ Validation & Security
+- FluentValidation on all API endpoints
+- Egyptian phone number format validation (01x)
+- Frontend validation with inline error messages
+- JWT-protected admin routes
+- CORS configured for production
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🏗️ Architecture
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+EventPay.API/
+├── Controllers/
+│   ├── AuthController         → JWT Login
+│   ├── EventsController       → CRUD Events
+│   ├── PaymentController      → Stripe + Webhook
+│   ├── TicketsController      → My Tickets + OTP
+│   ├── NotificationsController→ Email, WhatsApp, Telegram, OTP
+│   ├── ReportsController      → Analytics, Excel, PDF
+│   └── MapsController         → Geocoding, Distance
+├── Services/
+│   ├── Auth/                  → JWT Generation
+│   ├── Events/                → Event Logic
+│   ├── Payments/              → Stripe Integration
+│   ├── Messaging/             → Email, WhatsApp, Telegram, OTP
+│   ├── Maps/                  → OpenStreetMap + Haversine
+│   ├── Reports/               → Excel, PDF, Analytics
+│   └── Tickets/               → Ticket Queries
+├── Models/                    → DB Entities
+├── DTOs/                      → Request/Response Shapes
+├── Validators/                → FluentValidation Rules
+└── Data/                      → EF Core DbContext
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## ⚙️ Tech Stack
 
-### Analyzing the Bundle Size
+| Layer | Technology |
+|---|---|
+| Backend | .NET 10 Web API |
+| Frontend | React 18 |
+| Database | SQL Server + EF Core |
+| Payment | Stripe |
+| Email | SendGrid |
+| SMS / WhatsApp | Twilio |
+| Telegram | Telegram Bot API |
+| Excel Export | ClosedXML |
+| PDF Export | QuestPDF |
+| Maps | OpenStreetMap (Nominatim) |
+| Auth | JWT Bearer |
+| Validation | FluentValidation |
+| Charts | Recharts |
+| Hosting (API) | MonsterASP |
+| Hosting (Frontend) | Vercel |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🚀 Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Prerequisites
+- .NET 10 SDK
+- SQL Server
+- Node.js 18+
+- Stripe account (test mode)
+- SendGrid account
+- Twilio account
+- Telegram Bot Token
 
-### Advanced Configuration
+### Backend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+cd EventPay.API
+```
 
-### Deployment
+Copy `appsettings.Example.json` → `appsettings.json` and fill in your keys:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=EventPayDB;Trusted_Connection=True;TrustServerCertificate=True"
+  },
+  "Stripe": {
+    "SecretKey": "sk_test_...",
+    "WebhookSecret": "whsec_..."
+  },
+  "SendGrid": {
+    "ApiKey": "SG...",
+    "FromEmail": "your@email.com"
+  },
+  "Twilio": {
+    "AccountSid": "AC...",
+    "AuthToken": "...",
+    "FromNumber": "+1...",
+    "WhatsAppNumber": "+14155238886"
+  },
+  "Telegram": {
+    "BotToken": "..."
+  },
+  "Jwt": {
+    "Key": "YourSuperSecretKeyThatIsAtLeast32Characters!",
+    "Issuer": "EventPay",
+    "Audience": "EventPay"
+  },
+  "Admin": {
+    "Username": "admin",
+    "Password": "Admin@123"
+  }
+}
+```
 
-### `npm run build` fails to minify
+```bash
+dotnet ef database update
+dotnet run
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Stripe Webhook (Development only)
+
+```bash
+stripe listen --forward-to https://localhost:7057/api/payment/webhook
+```
+
+### Frontend Setup
+
+```bash
+cd eventpay-frontend
+npm install
+npm start
+```
+
+Update `src/api/axios.js` with your API URL:
+```javascript
+baseURL: 'https://your-api-url/api'
+```
+
+---
+
+## 📱 Pages
+
+| Route | Description | Access |
+|---|---|---|
+| `/` | Browse all events | Public |
+| `/event/:id` | Event details + ticket purchase | Public |
+| `/my-tickets` | View tickets via OTP verification | Public |
+| `/admin/login` | Admin login | Public |
+| `/admin/reports` | Tickets dashboard + export | Admin |
+| `/admin/analytics` | Charts & analytics | Admin |
+| `/admin/events` | Manage events | Admin |
+| `/admin/create-event` | Create new event | Admin |
+
+---
+
+## 📡 Key API Endpoints
+
+```
+Auth
+POST   /api/auth/login                     → Admin JWT login
+
+Events
+GET    /api/events                         → Get all events
+GET    /api/events/:id                     → Get event by ID
+POST   /api/events                         → Create event [Admin]
+DELETE /api/events/:id                     → Delete event [Admin]
+
+Payments
+POST   /api/payment                        → Create payment intent
+POST   /api/payment/webhook               → Stripe webhook
+
+Tickets
+POST   /api/tickets/request-otp           → Send OTP to email
+POST   /api/tickets/my-tickets            → Get tickets after OTP verify
+
+Reports [Admin]
+GET    /api/reports/tickets               → Paginated tickets
+GET    /api/reports/tickets/excel         → Export Excel
+GET    /api/reports/tickets/pdf           → Export PDF
+GET    /api/reports/analytics             → Charts data
+
+Notifications
+POST   /api/notifications/send-email
+POST   /api/notifications/send-whatsapp
+POST   /api/notifications/send-telegram
+POST   /api/notifications/send-otp/telegram
+POST   /api/notifications/verify-otp
+
+Maps
+GET    /api/maps/geocode?address=...       → Geocode address
+GET    /api/maps/distance                  → Calculate distance
+```
+
+---
+
+## 🔐 Admin Access
+
+```
+URL:      /admin/login
+Username: admin
+Password: Admin@123
+```
+
+---
+
+## 💡 Future Improvements
+
+- SMS support (requires A2P 10DLC registration)
+- QR code ticket generation
+- Email HTML templates
+- Multi-language support (Arabic / English)
+- Event categories & advanced search
+
+---
+
+<div align="center">
+
+Built with ❤️ by **Mohamed Galal**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://linkedin.com/in/mohammed-galal-ali)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=flat&logo=github)](https://github.com/Mohammed-Galal-Ali)
+
+</div>

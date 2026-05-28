@@ -110,7 +110,15 @@ export default function ReportsPage() {
             }}>
               🎯Mange Events
             </button>
-
+<button onClick={() => navigate('/admin/analytics')} style={{
+  display: 'flex', alignItems: 'center', gap: 8,
+  padding: '10px 18px', borderRadius: 10,
+  background: 'rgba(0,217,166,0.1)', border: '1px solid rgba(0,217,166,0.2)',
+  color: '#00d9a6', fontSize: 13, fontWeight: 700,
+  fontFamily: 'Tajawal, sans-serif', cursor: 'pointer',
+}}>
+  📈 Analytics
+</button>
 
             <button onClick={() => handleDownload('excel')} style={{
               display: 'flex', alignItems: 'center', gap: 8,
